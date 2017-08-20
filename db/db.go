@@ -63,3 +63,9 @@ func (p *pgDb) prepareSqlStatements() (err error) {
 
     return nil
 }
+
+people := make([]*model.Person, 0)
+if err := p.sqlSelectPeople.Select(&people); err != nil {
+    return nil, err
+}
+return people, nil
